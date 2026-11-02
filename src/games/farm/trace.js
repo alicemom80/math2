@@ -2,7 +2,7 @@
 // 초록 점과 화살표가 지금 쓸 획의 시작을 알려 준다. 너그럽게 판정한다(lineTrace.js): 벗어나면 멈추고 기다릴 뿐 틀림은 없다.
 // 한동안 가만있으면 노란 점이 지금 획을 한 번 따라가며 보여 준다. 모든 획을 쓰면 정답.
 import { h } from '@공통/widgets/dom.js';
-import { pickOne, PRAISE } from '@공통/games/logic.js';
+import { pickOne, DRAW_PRAISE } from '@공통/games/logic.js';
 import { pickHandler, replayClass } from '@공통/games/widgets.js';
 import { buildPath, pointAt, startTrace, pressTrace, moveTrace, releaseTrace, isDone } from '../lineTrace.js';
 import { strokesOf } from './traceDigits.js';
@@ -29,8 +29,6 @@ export const DIGITS_BY_LEVEL = Object.freeze([
   Object.freeze([2, 3, 5, 8]),
 ]);
 
-// "세었네" 같은 세기 칭찬은 따라 쓰기에 맞지 않아 뺀다
-const TRACE_PRAISE = Object.freeze(PRAISE.filter((p) => !/세었|셌|세어/.test(p)));
 
 /** 단계(level)의 숫자 중 하나. 바로 앞 문제(last)와 같은 수는 되도록 피한다 */
 export function pickDigit(level, last) {
@@ -75,7 +73,7 @@ function placeArrow(arrow, path) {
 export const traceGame = {
   key: 'trace',
   background: 'farm-base',
-  praise: TRACE_PRAISE,
+  praise: DRAW_PRAISE,
   levels: [
     [0, 0],
     [1, 1],
@@ -132,7 +130,7 @@ export const traceGame = {
       idleTimer = setTimeout(() => {
         if (!alive() || run.state.busy || trace.active) return;
         demos += 1;
-        bubble(LINE_IDLE_HINT, true);
+        if (demos > 1) bubble(LINE_IDLE_HINT, true); // 첫 안내는 말 없이 점만 (방금 들은 설명과 겹치거나 끊지 않게)
         const path = paths[index];
         const from = trace.reached;
         const began = Date.now();

@@ -21,6 +21,7 @@ const ICONS = [
 const BACKGROUNDS = [
   'savanna-base', 'forest-base', 'sea-base', 'dino-base', 'farm-base',
   'savanna-numbers', // 시작·지도 화면 (사바나 배경에 숫자를 흩뿌린 그림)
+  'night-base', // 잠금 화면
 ];
 const PROPS = [
   'fruit-apple', 'fruit-strawberry', 'fruit-orange', 'fruit-banana', 'fruit-grape', 'fruit-peach',
@@ -31,7 +32,7 @@ const PROPS = [
   'basket', 'corn',
 ];
 // 그려 둔 소품 (webp). 나머지 소품은 svg를 쓴다.
-const DRAWN_PROPS = ['fish', 'shell', 'footprint', 'dino-egg'];
+const DRAWN_PROPS = ['bush', 'fish', 'shell', 'footprint', 'dino-egg'];
 // 그려 둔 아이콘·배경 (webp)
 const DRAWN_ICONS = ['settings', 'speaker', 'star'];
 const DRAWN_BACKGROUNDS = BACKGROUNDS; // 배경은 모두 그림

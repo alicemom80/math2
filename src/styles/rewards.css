@@ -28,18 +28,29 @@
   color: var(--soft);
   position: relative;
 }
+/* 새 마을 열림: 흰 카드에 마을 동물, 글자, 별을 크게 (작으면 무엇인지 알아보기 어렵다) */
 .reward .open {
   display: flex;
   align-items: center;
-  gap: 1.4cqh;
+  gap: 2cqh;
   position: relative;
+  padding: 1cqh 3cqh;
+  border-radius: 4cqh;
+  background: rgb(255 255 255 / 90%);
+  border: 0.5cqh solid var(--ink);
 }
 .reward .open img {
-  height: 10cqh;
+  height: 14cqh;
+}
+.reward .open b {
+  font-weight: 400;
+  font-size: 6cqh;
+  color: var(--ink);
+  white-space: nowrap;
 }
 .reward .open .ico {
-  width: 7cqh;
-  height: 7cqh;
+  width: 9cqh;
+  height: 9cqh;
 }
 .reward .rbtn {
   position: relative;

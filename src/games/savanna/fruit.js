@@ -3,6 +3,7 @@ import { h, art } from '@공통/widgets/dom.js';
 import { NATIVE, pickNumber, pickOne, wait } from '@공통/games/logic.js';
 import { numberOptions, pickHandler } from '@공통/games/widgets.js';
 import { fruitPrompt, FRUIT_HINT_START, fruitHintEnd } from '../../audio/script.js';
+import { COUNT_PRAISE } from '@공통/games/logic.js';
 
 const MAX = 10;
 // [그림 이름, 과일 이름, 붙는 말(이/가)]
@@ -24,6 +25,7 @@ function mark(item, k) {
 }
 
 export const fruitGame = {
+  praise: COUNT_PRAISE,
   key: 'fruit',
   background: 'savanna-base',
   levels: [

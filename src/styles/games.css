@@ -315,7 +315,7 @@
 }
 .cover {
   position: absolute;
-  inset: -1.4cqh;
+  inset: -5cqh; /* 둥근 덤불 그림이 카드 모서리의 무늬까지 가리게 넉넉히 */
 }
 .cover[hidden] {
   display: none;

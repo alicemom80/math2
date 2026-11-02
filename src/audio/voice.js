@@ -55,7 +55,9 @@ async function playClip(id, text) {
     source.buffer = buffer;
     source.connect(ctx.destination);
     source.onended = () => {
-      if (currentSource === source) currentSource = null;
+      if (currentSource !== source) return; // 멈춘 소리 (끝 알림은 stopVoice가 이미 했다)
+      currentSource = null;
+      finishSpeech();
     };
     currentSource = source;
     source.start();
@@ -64,6 +66,16 @@ async function playClip(id, text) {
     console.warn('[voice] 녹음을 틀 수 없어 기본 음성으로 읽습니다.', error);
     speak(text);
   }
+}
+
+// ---------- 말이 끝났는지 알리기 ----------
+// say()는 말이 끝나면(또는 멈추면) 풀리는 Promise를 돌려준다. 칭찬이 끝난 뒤 다음 문제로 넘어갈 때 쓴다.
+let endSpeech = null;
+
+function finishSpeech() {
+  const end = endSpeech;
+  endSpeech = null;
+  end?.();
 }
 
 function stopAudio() {
@@ -102,7 +114,10 @@ function koreanVoice() {
 
 function speak(text) {
   const synth = globalThis.speechSynthesis;
-  if (!synth || !globalThis.SpeechSynthesisUtterance) return;
+  if (!synth || !globalThis.SpeechSynthesisUtterance) return finishSpeech();
+  // 앞 문장을 멈출 때 그 문장의 끝 알림이 늦게 와도, 지금 문장의 끝으로 착각하지 않게
+  const mine = endSpeech;
+  const done = () => mine && mine === endSpeech && finishSpeech();
   try {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'ko-KR';
@@ -110,15 +125,19 @@ function speak(text) {
     utterance.pitch = 1.15;
     const voice = koreanVoice();
     if (voice) utterance.voice = voice;
+    utterance.onend = done;
+    utterance.onerror = done;
     synth.speak(utterance);
   } catch (error) {
     console.warn('[voice] 음성을 읽을 수 없습니다.', error);
+    done();
   }
 }
 
 // ---------- 밖에서 쓰는 기능 ----------
 export function stopVoice() {
   stopAudio();
+  finishSpeech(); // 기다리던 쪽은 "끝났다"로 받는다
   try {
     globalThis.speechSynthesis?.cancel();
   } catch (error) {
@@ -126,11 +145,16 @@ export function stopVoice() {
   }
 }
 
+/** 말한다. 말이 끝나거나 멈추면 풀리는 Promise를 돌려준다 */
 export function say(text) {
   stopVoice();
+  const ended = new Promise((resolve) => {
+    endSpeech = resolve;
+  });
   const id = voiceIdOf(text);
   if (!id && import.meta.env.DEV) console.warn('[voice] 목록에 없는 문장:', text);
 
   if (id && recorded.has(id)) playClip(id, text);
   else speak(text);
+  return ended;
 }

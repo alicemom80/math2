@@ -5,6 +5,7 @@ import { pickNumber, wait } from '@공통/games/logic.js';
 import { pickHandler } from '@공통/games/widgets.js';
 import { patternQuestion, PATTERN_TYPES } from '@공통/games/questions.js';
 import { PATTERN_PROMPT, PATTERN_HINT, PATTERN_HINT_END } from '../../audio/villageScript.js';
+import { PICK_PRAISE } from '@공통/games/logic.js';
 
 const ITEMS = {
   penguin: { kind: 'character', name: '펭귄' },
@@ -18,6 +19,7 @@ const UNIT_MS = 1100;
 const itemArt = (key) => art(ITEMS[key].kind, key, { alt: '' });
 
 export const patternGame = {
+  praise: PICK_PRAISE,
   key: 'pattern',
   background: 'sea-base',
   // 규칙 번호 범위 (PATTERN_TYPES: AB, AAB, ABB, ABC)

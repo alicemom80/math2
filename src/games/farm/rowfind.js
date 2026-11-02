@@ -4,11 +4,13 @@ import { h } from '@공통/widgets/dom.js';
 import { pickNumber } from '@공통/games/logic.js';
 import { pickHandler } from '@공통/games/widgets.js';
 import { rowFindPrompt, ROWFIND_HINT } from '../../audio/villageScript.js';
+import { PICK_PRAISE } from '@공통/games/logic.js';
 
 const ROW = 10;
 const rowOf = (n) => Math.ceil(n / ROW); // 1~10 → 1줄, 11~20 → 2줄 …
 
 export const rowFindGame = {
+  praise: PICK_PRAISE,
   key: 'rowfind',
   background: 'farm-base',
   levels: [

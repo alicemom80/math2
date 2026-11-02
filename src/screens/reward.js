@@ -11,12 +11,15 @@ import { stopVoice } from '../audio/voice.js';
 /** 특별 친구가 나온 뒤 ▶를 막는 시간 (연타로 바로 지나가지 않게) */
 const SPECIAL_HOLD_MS = 1000;
 
+/** 새 마을이 열렸다는 표시: 마을 대표 동물 + "○○ 마을이 열렸어!" 글자 + 별 */
 function openedBadge(v) {
+  const label = `${withSubject(v.name)} 열렸어!`;
   return h(
     'div',
-    { class: 'open', role: 'img', 'aria-label': `${withSubject(v.name)} 열렸어요` },
-    art('character', v.character),
-    art('icon', 'star', { class: 'ico' }),
+    { class: 'open', role: 'img', 'aria-label': label },
+    art('character', v.character, { alt: '' }),
+    h('b', { 'aria-hidden': 'true' }, label),
+    art('icon', 'star', { class: 'ico', alt: '' }),
   );
 }
 

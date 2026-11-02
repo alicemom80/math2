@@ -7,12 +7,14 @@ import { nativeCount } from '@공통/games/numbers.js';
 import { splitTens } from '@공통/games/questions.js';
 import { tapToCount, countTogether, HINT_START_MS } from '@공통/games/shared/counting.js';
 import { FISH_PROMPT, FISH_HINT, fishHintEnd } from '../../audio/villageScript.js';
+import { COUNT_PRAISE } from '@공통/games/logic.js';
 
 const TEN = 10;
 const MIN = 11;
 const MAX = 39;
 
 export const fishnetGame = {
+  praise: COUNT_PRAISE,
   key: 'fishnet',
   background: 'sea-base',
   levels: [

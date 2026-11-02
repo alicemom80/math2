@@ -62,6 +62,7 @@ export const gameScreen = {
 
     const run = createGameRun({
       levels: game.levels,
+      praise: game.praise, // 세기·고르기·그리기 중 게임에 맞는 칭찬
       fx,
       ask: (info) => {
         const question = game.ask(play, { run, say: app.say, bubble: bubble.set, sfx: app.sfx }, info);

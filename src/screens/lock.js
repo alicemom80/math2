@@ -4,17 +4,6 @@ import { holdable, PARENT_HOLD_MS } from '../widgets/hold.js';
 import { pickMission, unlockChange } from '../app/playtime.js';
 import { stopVoice } from '../audio/voice.js';
 import { LOCK_TEXT, lockLine, UNLOCK_TEXT } from '../audio/script.js';
-const STAR_COUNT = 22;
-
-function stars() {
-  return h(
-    'div',
-    { class: 'stars', 'aria-hidden': 'true' },
-    Array.from({ length: STAR_COUNT }, () =>
-      h('i', { style: `left:${2 + Math.random() * 96}%;top:${3 + Math.random() * 57}%` }),
-    ),
-  );
-}
 
 export const lockScreen = {
   showBar: false,
@@ -30,7 +19,7 @@ export const lockScreen = {
     });
 
     root.append(
-      stars(),
+      art('background', 'night-base', { class: 'lockbg', 'aria-hidden': 'true' }), // 밤하늘 그림 (별·달이 그려져 있다)
       h('div', { class: 'zzz', 'aria-hidden': 'true' }, 'Z z z'),
       art('character', 'elephant', { class: 'sleepy', alt: '잠든 코끼리' }),
       h('p', {}, LOCK_TEXT),

@@ -5,10 +5,12 @@ import { numberButtons, pickHandler } from '@공통/games/widgets.js';
 import { sinoWord, tensChoices } from '@공통/games/numbers.js';
 import { tapToCount, countTogether, HINT_START_MS } from '@공통/games/shared/counting.js';
 import { SHELLS_PROMPT, SHELLS_HINT, shellsHintEnd } from '../../audio/villageScript.js';
+import { COUNT_PRAISE } from '@공통/games/logic.js';
 
 const TEN = 10;
 
 export const shellsGame = {
+  praise: COUNT_PRAISE,
   key: 'shells',
   background: 'sea-base',
   // 상자 수 범위

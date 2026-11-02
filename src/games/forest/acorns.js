@@ -6,11 +6,13 @@ import { numberOptions, pickHandler } from '@공통/games/widgets.js';
 import { nativeCount } from '@공통/games/numbers.js';
 import { tapToCount, countTogether, markCount, HINT_START_MS, HINT_STEP_MS } from '@공통/games/shared/counting.js';
 import { ACORNS_PROMPT, ACORNS_HINT, countHintEnd } from '../../audio/villageScript.js';
+import { COUNT_PRAISE } from '@공통/games/logic.js';
 
 const TEN = 10;
 const MAX = 20;
 
 export const acornsGame = {
+  praise: COUNT_PRAISE,
   key: 'acorns',
   background: 'forest-base',
   levels: [

@@ -5,6 +5,7 @@ import { pickNumber, wait } from '@공통/games/logic.js';
 import { pickHandler } from '@공통/games/widgets.js';
 import { pickDistinct } from '@공통/games/questions.js';
 import { balloonPrompt, BALLOON_HINT, balloonHintEnd } from '../../audio/villageScript.js';
+import { PICK_PRAISE } from '@공통/games/logic.js';
 
 const BALLOONS = 5;
 const COLORS = ['balloon-red', 'balloon-blue', 'balloon-yellow', 'balloon-green'];
@@ -23,6 +24,7 @@ function popBalloon(btn, run, sfx) {
 }
 
 export const balloonGame = {
+  praise: PICK_PRAISE,
   key: 'balloon',
   background: 'forest-base',
   levels: [

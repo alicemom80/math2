@@ -3,6 +3,7 @@ import { h, art } from '@공통/widgets/dom.js';
 import { NATIVE, pickNumber, wait } from '@공통/games/logic.js';
 import { tenFrameEl, replayClass } from '@공통/games/widgets.js';
 import { pondPrompt, pondHintStart, POND_EMPTY, pondTooFew, pondTooMany } from '../../audio/script.js';
+import { COUNT_PRAISE } from '@공통/games/logic.js';
 
 const MAX_HIPPOS = 8;
 const EXTRA_HIPPOS = 2;
@@ -20,6 +21,7 @@ const HINT_STEP_MS = 750;
 const WATER = { cx: 0.5, cy: 0.52, rx: 0.42, ry: 0.38 };
 
 export const pondGame = {
+  praise: COUNT_PRAISE,
   key: 'pond',
   background: 'savanna-base',
   levels: [

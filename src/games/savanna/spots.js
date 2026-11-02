@@ -4,6 +4,7 @@ import { h, art } from '@공통/widgets/dom.js';
 import { NATIVE, DICE, pickNumber, wait } from '@공통/games/logic.js';
 import { numberOptions, pickHandler } from '@공통/games/widgets.js';
 import { SPOTS_LOOK, SPOTS_PROMPT, SPOTS_HINT_START, spotsHintEnd } from '../../audio/script.js';
+import { PICK_PRAISE } from '@공통/games/logic.js';
 
 const MAX = 6;
 const FIRST_LOOK_MS = 2000;
@@ -13,6 +14,7 @@ const HINT_STEP_MS = 750;
 const HINT_END_MS = 600;
 
 export const spotsGame = {
+  praise: PICK_PRAISE,
   key: 'spots',
   background: 'savanna-base',
   levels: [

@@ -3,11 +3,29 @@
 /* 잠금 */
 .screen.lock {
   z-index: 20;
-  background: radial-gradient(circle at 70% 20%, #2f3f6b, var(--night));
+  background: var(--night); /* 그림을 불러오기 전 색 */
   color: #fff;
   justify-content: center;
   gap: 2cqh;
   padding-top: 4cqh;
+  text-shadow: 0 0.3cqh 0.8cqh rgba(0, 0, 0, 0.6);
+}
+/* 밤 배경 그림 + 글씨가 잘 보이게 살짝 어두운 막 */
+.lock .lockbg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+.screen.lock::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 16, 40, 0.3);
+  z-index: -1;
+  pointer-events: none;
 }
 .lock .sleepy {
   height: 36cqh;
@@ -22,6 +40,9 @@
 .lock p.mission {
   font-size: 3.6cqh;
   color: #ffe07a;
+  background: rgba(10, 16, 40, 0.5);
+  padding: 0.8cqh 3cqh;
+  border-radius: 3cqh;
 }
 .zzz {
   position: absolute;
@@ -36,19 +57,11 @@
     opacity: 0.6;
   }
 }
-.stars i {
-  position: absolute;
-  width: 0.8cqh;
-  height: 0.8cqh;
-  border-radius: 50%;
-  background: #fff;
-  opacity: 0.7;
-}
 
 /* 꾹 누르기 버튼: 누르는 동안 노란 막대가 왼쪽부터 찬다 */
 .hold {
   position: relative;
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(10, 16, 40, 0.55);
   color: #fff;
   font-size: 3cqh;
   padding: 1.4cqh 4cqh;

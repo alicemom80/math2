@@ -24,7 +24,7 @@ test('마지막 게임과 마지막 동물: 스티커 → 숲속 마을 열림 �
 
   await expect(page.getByRole('img', { name: '카피바라' })).toBeVisible();
   await expect(page.locator('.reward p')).toHaveText('카피바라 스티커!');
-  await expect(page.getByRole('img', { name: '숲속 마을이 열렸어요' })).toBeVisible();
+  await expect(page.getByRole('img', { name: '숲속 마을이 열렸어!' })).toBeVisible();
 
   await page.getByRole('button', { name: '다음' }).click();
   await expect(page.getByRole('img', { name: '부엉이' })).toBeVisible();

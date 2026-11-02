@@ -7,8 +7,10 @@ import { sinoWord } from '@공통/games/numbers.js';
 import { stepsQuestion } from '@공통/games/questions.js';
 import { HINT_START_MS, HINT_STEP_MS } from '@공통/games/shared/counting.js';
 import { STEPS_PROMPT, STEPS_PROMPT_MID, STEPS_HINT_END } from '../../audio/villageScript.js';
+import { PICK_PRAISE } from '@공통/games/logic.js';
 
 export const stepsGame = {
+  praise: PICK_PRAISE,
   key: 'steps',
   background: 'dino-base',
   // [작은 수, 큰 수, 빈칸 자리('end': 늘 마지막)]

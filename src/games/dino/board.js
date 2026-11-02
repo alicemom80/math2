@@ -4,10 +4,12 @@ import { h } from '@공통/widgets/dom.js';
 import { pickNumber } from '@공통/games/logic.js';
 import { pickHandler } from '@공통/games/widgets.js';
 import { boardPrompt, BOARD_HINT } from '../../audio/villageScript.js';
+import { PICK_PRAISE } from '@공통/games/logic.js';
 
 const ROW = 10;
 
 export const boardGame = {
+  praise: PICK_PRAISE,
   key: 'board',
   background: 'dino-base',
   levels: [
