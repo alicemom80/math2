@@ -21,7 +21,7 @@ function createBubble(app) {
     el,
     set(message, speak = true) {
       text.textContent = message;
-      if (speak) app.say(message);
+      return speak ? app.say(message) : undefined;
     },
   };
 }

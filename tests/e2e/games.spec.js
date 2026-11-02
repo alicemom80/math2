@@ -45,13 +45,13 @@ test('과일 세기: 하나씩 누르면 번호가 붙고, 5문제를 맞히면 
   await expectStarOnCard(page, 'fruit');
 });
 
-test('과일 세기: 첫 오답은 다시 세어 보자고 하고, 두 번째 오답은 같이 세어 준다', async ({ page }) => {
+test('과일 세기: 첫 오답은 다시 해 보자고 하고, 두 번째 오답은 같이 세어 준다', async ({ page }) => {
   await openGame(page, '과일 세기');
   const n = await page.locator('.tray .fruit').count();
   const wrong = page.locator(`.opts .opt:not([aria-label="${n}"])`).first();
 
   await wrong.click();
-  await expect(page.locator('.bubble')).toContainText('다시 세어 볼까?');
+  await expect(page.locator('.bubble')).toContainText('다시 해 볼까?');
 
   await wrong.click();
   await expect(page.locator('.bubble')).toContainText('같이 세어 보자');
@@ -115,7 +115,7 @@ test('물웅덩이 채우기: 하마를 끌어서 물웅덩이에 넣을 수 있
   const n = Number(await page.locator('.sign').getAttribute('data-target'));
   if (n === 1) await page.locator('.hip[aria-pressed="false"]').first().click();
   await page.getByRole('button', { name: '다 했어' }).click();
-  await expect(page.locator('.bubble')).toContainText('다시 세어 볼까?');
+  await expect(page.locator('.bubble')).toContainText('다시 해 볼까?');
   await expect(page.locator('.qdots i.on')).toHaveCount(0);
 });
 

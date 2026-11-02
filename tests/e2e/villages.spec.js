@@ -38,7 +38,7 @@ for (const [village, name, key] of GAMES) {
     const answer = await answerOf(page);
     const wrong = page.locator(`.play .pick:not([data-value="${answer}"])`).first();
     await wrong.click({ force: true });
-    await expect(page.locator('.bubble')).toContainText('다시 세어 볼까?');
+    await expect(page.locator('.bubble')).toContainText('다시 해 볼까?');
     await page.waitForTimeout(800); // 첫 오답 뒤 잠깐 누르기를 막는다
     await wrong.click({ force: true });
     await expect(async () => {

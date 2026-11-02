@@ -14,7 +14,13 @@ const ITEMS = {
   star: { kind: 'prop', name: '불가사리' },
 };
 const HINT_START_MS = 1500;
+/** 힌트 말이 끝나기를 이만큼까지만 기다린다 (말 끝 알림이 오지 않는 브라우저 대비) */
+const HINT_SPEECH_MAX_MS = 5000;
 const UNIT_MS = 1100;
+
+/** 말이 끝날 때까지 (적어도 minMs, 길어도 HINT_SPEECH_MAX_MS) 기다린다 */
+const untilSpoken = (spoken, minMs = 0) =>
+  Promise.all([wait(minMs), Promise.race([Promise.resolve(spoken).catch(() => {}), wait(HINT_SPEECH_MAX_MS)])]);
 
 const itemArt = (key) => art(ITEMS[key].kind, key, { alt: '' });
 
@@ -47,8 +53,8 @@ export const patternGame = {
     play.replaceChildren(h('div', { class: 'patternq' }, h('div', { class: 'pseq' }, cells, blank), h('div', { class: 'opts' }, options)));
 
     async function hint() {
-      bubble(PATTERN_HINT, true);
-      await wait(HINT_START_MS);
+      // 힌트 말이 끝난 뒤 반짝이고, 반짝임이 끝나면 마지막 안내 (말끼리 끊지 않게)
+      await untilSpoken(bubble(PATTERN_HINT, true), HINT_START_MS);
       for (let start = 0; start + unit <= cells.length; start += unit) {
         if (run.state.stopped) return;
         const group = cells.slice(start, start + unit);

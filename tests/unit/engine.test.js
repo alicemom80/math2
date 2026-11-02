@@ -55,7 +55,7 @@ describe('게임 흐름', () => {
     expect(onProgress).toHaveBeenCalledTimes(1);
   });
 
-  test('첫 오답은 "다시 세어 볼까?"만, 두 번째 오답에서 같이 세기 힌트를 준다', async () => {
+  test('첫 오답은 "다시 해 볼까?"만, 두 번째 오답에서 같이 세기 힌트를 준다', async () => {
     const { run, fx, hint } = setup();
     run.start();
     expect(await run.answer(false)).toBe('retry');
@@ -84,7 +84,7 @@ describe('게임 흐름', () => {
     expect(await run.answer(true)).toBe('right');
   });
 
-  test('첫 오답 직후 연타는 무시해서 "다시 세어 볼까?" 기회를 지킨다', async () => {
+  test('첫 오답 직후 연타는 무시해서 "다시 해 볼까?" 기회를 지킨다', async () => {
     const { run, hint, fx } = setup();
     run.start();
     await run.answer(false);
