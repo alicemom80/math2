@@ -403,3 +403,34 @@ img {
   font-weight: 400;
   color: var(--coral);
 }
+
+/* 인스타 아이콘 (직접 그린 단순 모양, 글자 크기에 맞춰 커짐) */
+.igicon {
+  display: inline-block;
+  position: relative;
+  width: 1.25em;
+  height: 1.25em;
+  margin-right: 0.35em;
+  vertical-align: -0.28em;
+  border-radius: 0.34em;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+.igicon::before {
+  content: '';
+  position: absolute;
+  inset: 0.2em;
+  border: 0.09em solid #fff;
+  border-radius: 0.3em;
+  background: radial-gradient(circle at 78% 24%, #fff 0, #fff 0.07em, transparent 0.08em);
+}
+.igicon::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.32em;
+  height: 0.32em;
+  transform: translate(-50%, -50%);
+  border: 0.09em solid #fff;
+  border-radius: 50%;
+}

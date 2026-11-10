@@ -47,7 +47,7 @@ export const mapScreen = {
   render(root, app) {
     root.append(
       h('div', { class: 'path' }, VILLAGES.map((v) => villageCard(v, app))),
-      h('div', { class: 'credit small', 'aria-hidden': 'true' }, '새 소식 📷 ', h('b', {}, '@alicemom80')),
+      h('div', { class: 'credit small', 'aria-hidden': 'true' }, h('i', { class: 'igicon' }), 'instagram ', h('b', {}, '@alicemom80')),
     );
   },
 };
