@@ -45,6 +45,9 @@ function villageCard(village, app) {
 export const mapScreen = {
   background: 'savanna-numbers',
   render(root, app) {
-    root.append(h('div', { class: 'path' }, VILLAGES.map((v) => villageCard(v, app))));
+    root.append(
+      h('div', { class: 'path' }, VILLAGES.map((v) => villageCard(v, app))),
+      h('div', { class: 'credit small', 'aria-hidden': 'true' }, '새 소식 📷 ', h('b', {}, '@alicemom80')),
+    );
   },
 };

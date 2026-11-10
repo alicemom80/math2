@@ -34,6 +34,7 @@ export const startScreen = {
       art('character', 'elephant', { class: 'hero', alt: '코끼리' }),
       h('h1', {}, '코끼리와 숫자 친구들 (2단계)'),
       roundButton('play', '시작', start),
+      h('div', { class: 'credit', 'aria-hidden': 'true' }, '만든 사람 앨리스맘 · 📷 ', h('b', {}, '@alicemom80')),
     );
   },
 };

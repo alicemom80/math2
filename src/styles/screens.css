@@ -378,3 +378,28 @@ img {
 .gcard > span:last-child {
   font-size: 5.6cqh;
 }
+
+/* 만든 사람 표시 (눌러도 아무 일 없음. 링크는 부모님 메뉴 안에만 있다) */
+.credit {
+  position: absolute;
+  left: 50%;
+  bottom: 3.4cqh;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
+  border-radius: 99cqh;
+  padding: 1cqh 3.4cqh;
+  font-size: 3.6cqh;
+  box-shadow: 0 0.4cqh 1.2cqh rgba(0, 0, 0, 0.12);
+}
+.credit.small {
+  font-size: 2.9cqh;
+  padding: 0.8cqh 2.8cqh;
+}
+.credit b {
+  font-weight: 400;
+  color: var(--coral);
+}

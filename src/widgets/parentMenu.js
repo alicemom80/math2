@@ -69,6 +69,7 @@ export function createParentMenu(stage, app) {
       })),
       inGame ? row('게임 그만하고 나가기', h('button', { onclick: () => { close(); app.go('village', { village: app.current.params.village ?? 'savanna' }); } }, '마을로 나가기')) : null,
       row('진행 기록 지우기', resetBtn),
+      row('만든 사람 소식', h('a', { class: 'ig', href: 'https://www.instagram.com/alicemom80/', target: '_blank', rel: 'noopener noreferrer' }, '📷 @alicemom80')),
       h('button', { class: 'close', onclick: close }, '닫기'),
     );
 
