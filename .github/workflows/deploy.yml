@@ -26,7 +26,7 @@ jobs:
           path: app
       - uses: actions/checkout@v4
         with:
-          repository: lakesis1207-afk/elephant-common
+          repository: alicemom80/elephant-common
           path: 공통
       - uses: actions/setup-node@v4
         with:
