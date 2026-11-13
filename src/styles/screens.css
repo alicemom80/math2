@@ -195,10 +195,10 @@ img {
   justify-content: center;
 }
 .stage-tag {
-  font-size: 4.2cqh;
+  font-size: 6.8cqh;
   font-weight: 800;
   color: var(--ink);
-  margin-bottom: 3cqh;
+  margin-bottom: 2.5cqh;
   text-align: center;
 }
 .path {
