@@ -46,6 +46,7 @@ export const mapScreen = {
   background: 'savanna-numbers',
   render(root, app) {
     root.append(
+      h('div', { class: 'stage-tag' }, '코끼리와 숫자 친구들 (2단계)'),
       h('div', { class: 'path' }, VILLAGES.map((v) => villageCard(v, app))),
       h('div', { class: 'credit small', 'aria-hidden': 'true' }, h('i', { class: 'igicon' }), 'instagram ', h('b', {}, '@alicemom80')),
     );

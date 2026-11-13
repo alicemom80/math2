@@ -194,6 +194,13 @@ img {
 .screen.village {
   justify-content: center;
 }
+.stage-tag {
+  font-size: 4.2cqh;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 3cqh;
+  text-align: center;
+}
 .path {
   display: flex;
   gap: 2.4cqh;
