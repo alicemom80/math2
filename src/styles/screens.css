@@ -441,3 +441,28 @@ img {
   border: 0.09em solid #fff;
   border-radius: 50%;
 }
+
+/* 저작권 문구 */
+.credit.above {
+  bottom: 7cqh;
+}
+.copyright {
+  position: absolute;
+  left: 50%;
+  bottom: 2.2cqh;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  font-size: 2.4cqh;
+  color: var(--ink);
+  opacity: 0.8;
+  text-shadow: 0 0 0.6cqh #fff, 0 0 0.6cqh #fff;
+}
+.copyright-note {
+  margin-top: 1.6cqh;
+  text-align: center;
+  font-size: 2.4cqh;
+  opacity: 0.6;
+  user-select: none;
+}

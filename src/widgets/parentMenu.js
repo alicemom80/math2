@@ -71,6 +71,7 @@ export function createParentMenu(stage, app) {
       row('진행 기록 지우기', resetBtn),
       row('만든 사람 소식', h('a', { class: 'ig', href: 'https://www.instagram.com/alicemom80/', target: '_blank', rel: 'noopener noreferrer' }, h('i', { class: 'igicon' }), ' @alicemom80')),
       h('button', { class: 'close', onclick: close }, '닫기'),
+      h('div', { class: 'copyright-note' }, '© 2026 alicemom80. All rights reserved.'),
     );
 
     const next = h('div', { class: 'modal' }, panel);
