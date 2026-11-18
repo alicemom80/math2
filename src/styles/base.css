@@ -74,12 +74,34 @@ body {
   gap: 3cqh;
 }
 
-/* 세로로 들면 안내만 보인다 (아이폰 사파리는 방향 고정이 안 되므로) */
+/*
+ * 세로로 들고 있어도 앱은 가로 화면으로 보인다: 휴대폰·태블릿(터치)은 화면 전체를 시계 방향 90도 돌린다.
+ * (안드로이드는 ▶에서 가로 고정을 시도하고, 아이폰·카톡처럼 고정이 안 되는 곳을 위한 방법이다.)
+ * 글자·그림은 그대로이고 크기는 무대 높이 기준(cqh)이라 돌려도 똑같이 보인다.
+ * 마우스를 쓰는 컴퓨터에서 창이 세로일 때만 예전처럼 안내 문구를 보여 준다.
+ */
 .rotate {
   display: none;
 }
 
-@media (orientation: portrait) {
+@media (orientation: portrait) and (pointer: coarse) {
+  .wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    width: 100dvh;
+    height: 100vw;
+    padding: 0;
+    transform-origin: top left;
+    transform: translateX(100vw) rotate(90deg);
+  }
+  .stage {
+    max-height: none;
+  }
+}
+
+@media (orientation: portrait) and (pointer: fine) {
   .wrap {
     display: none;
   }

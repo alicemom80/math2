@@ -1,4 +1,5 @@
 // 물웅덩이 채우기 (하마): 목표 수만큼 하마를 끌거나 톡 눌러 물웅덩이에 넣고 ✓를 누른다.
+import { isRotated, toStageDelta, toStageFraction } from '../../rotation.js';
 import { h, art } from '@공통/widgets/dom.js';
 import { NATIVE, pickNumber, wait } from '@공통/games/logic.js';
 import { tenFrameEl, replayClass } from '@공통/games/widgets.js';
@@ -86,8 +87,9 @@ export const pondGame = {
     function inWater(el) {
       const r = pond.getBoundingClientRect();
       const b = el.getBoundingClientRect();
-      const dx = (b.left + b.width / 2 - (r.left + r.width * WATER.cx)) / (r.width * WATER.rx);
-      const dy = (b.top + b.height / 2 - (r.top + r.height * WATER.cy)) / (r.height * WATER.ry);
+      const { fx, fy } = toStageFraction(r, b.left + b.width / 2, b.top + b.height / 2);
+      const dx = (fx - WATER.cx) / WATER.rx;
+      const dy = (fy - WATER.cy) / WATER.ry;
       return dx * dx + dy * dy <= 1;
     }
 
@@ -103,12 +105,12 @@ export const pondGame = {
       });
       el.addEventListener('pointermove', (e) => {
         if (!start || e.pointerId !== start.id) return;
-        const dx = e.clientX - start.x;
-        const dy = e.clientY - start.y;
+        const { dx, dy } = toStageDelta(e.clientX - start.x, e.clientY - start.y);
         if (!start.moved && Math.hypot(dx, dy) < DRAG_START_PX) return;
         start.moved = true;
         el.classList.add('drag');
-        const scale = pq.getBoundingClientRect().width / pq.clientWidth || 1;
+        const box = pq.getBoundingClientRect();
+        const scale = (isRotated() ? box.height : box.width) / pq.clientWidth || 1;
         el.style.left = `${start.left + dx / scale}px`;
         el.style.top = `${start.top + dy / scale}px`;
       });
