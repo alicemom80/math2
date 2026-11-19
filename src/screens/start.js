@@ -1,6 +1,7 @@
 // 시작 화면: 코끼리 인사 + ▶
 import { h, art, roundButton } from '@공통/widgets/dom.js';
 import { GREETING } from '../audio/script.js';
+import { isInApp, openOutside } from '../openOutside.js';
 
 /**
  * 휴대폰·태블릿 브라우저: ▶를 누르면 주소창 없는 전체 화면 + 가로 고정.
@@ -23,13 +24,15 @@ export const startScreen = {
   background: 'savanna-numbers',
   render(root, app) {
     const start = () => {
+      // 앱 안 브라우저(카카오톡 등)에서는 ▶가 폰의 바깥 브라우저로 연다
+      if (isInApp()) { openOutside(app.toast); return; }
       enterFullscreen();
       app.startSound();
       app.go('map');
       app.say(GREETING);
     };
     // 링크를 열자마자는 브라우저가 막으므로, 시작 화면 어디든 처음 누르는 순간 전체 화면으로
-    root.addEventListener('pointerdown', enterFullscreen, { once: true });
+    if (!isInApp()) root.addEventListener('pointerdown', enterFullscreen, { once: true });
     root.append(
       art('character', 'elephant', { class: 'hero', alt: '코끼리' }),
       h('h1', {}, '코끼리와 숫자 친구들 (2단계)'),
